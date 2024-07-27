@@ -2,9 +2,8 @@ const express=require('express');
 {require("dotenv").config();}
 const app=express();
 const dbjs=require("./dbs.js");
-dbjs();
-
 const cors=require("cors");
+dbjs();
 app.use(cors());
 app.use(express.json());
 const port =process.env.PORT || 4000;
