@@ -100,5 +100,37 @@ router.post("/studentLogin",async(req,res)=>{
         }
     }
 })
+router.post("/adminLogin",async(req,res)=>{
+    const bodydata=req.body;
+    let success=false;
+    if(bodydata.email===""){
+        res.json({success,error:"Enter the correct email address."});
+    }
+    else{
+        try{
+            const newAdminUser=await adminAuth.findOne({email:bodydata.email});
+            if(!newAdminUser){
+                res.json({success,error:"email does not exist"});  
+            }
+            else{
+                const result=await bcrypt.compare(bodydata.password,newAdminUser.password);
+                if(result){
+                    const token={
+                        user:{id:newAdminUser.id}
+                    };
+                    const authtoken=jwt.sign(token,process.env.SECRET);
+                    success=true;
+                    res.json({success,authtoken});
+                }
+                else{
+                    res.json({success,error:"wrong password"});
+                }
+            }
+        }
+        catch(error){
+            res.json({success,error});
+        }
+    }
+})
 
 module.exports=router;
