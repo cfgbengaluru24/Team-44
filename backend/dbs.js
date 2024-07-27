@@ -1,19 +1,22 @@
-// app.js
-{require("dotenv").config();}
-const express = require('express');
+require('dotenv').config(); // Load environment variables
+
 const mongoose = require('mongoose');
 
-const uri = process.env.MONGOAPI;
+const connectDB = async () => {
+    try {
+        const mongoURI = process.env.MONGOAPI; // Use the correct environment variable
+        if (!mongoURI) {
+            throw new Error('MONGOAPI is not defined in .env file');
+        }
+        await mongoose.connect(mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('Connected to MongoDB Atlas');
+    } catch (error) {
+        console.error('Error connecting to MongoDB Atlas:', error.message);
+        process.exit(1); // Exit process with failure
+    }
+};
 
-function dbjs() {
-  mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => {
-    console.log('Connected to MongoDB Atlas');
-  }).catch((error) => {
-    console.error('Error connecting to MongoDB Atlas', error);
-  });
-}
-
-module.exports=dbjs;
+module.exports = connectDB;
