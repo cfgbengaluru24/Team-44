@@ -26,6 +26,7 @@ const UserSignin = () => {
         localStorage.setItem("userToken",signres.authtoken);
         contextcontent.setstudentFlag(true);
         contextcontent.setNewUser(false);
+        localStorage.setItem("Client","Student");
         navigate("/studentHome");
         console.log(signres)
       }
@@ -47,6 +48,7 @@ const UserSignin = () => {
         localStorage.setItem("userToken",signres.authtoken);
         contextcontent.setstudentFlag(false);
         contextcontent.setNewUser(false);
+        localStorage.setItem("Client","Admin");
         navigate("/");
       }
       else{
