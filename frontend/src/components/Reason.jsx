@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import projectcontext from "../context/Projectcontext";
 
 const Reason = () => {
   const contextcontent=useContext(projectcontext);
@@ -17,7 +18,7 @@ const Reason = () => {
       const response = await axios.post('http://localhost:4000/api/check-prompt/check-prompt', data);
       console.log(response.data);
       alert("Form submitted successfully!");
-      reset();
+      reset();  
     } catch (error) {
       console.error("Error submitting form", error);
       alert("Error submitting form");
