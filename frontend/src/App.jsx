@@ -10,7 +10,7 @@ import Reason from "./components/Reason.jsx";
 import AttendanceEmail from "./components/AttendanceEmail.jsx";
 import Projectstate from "./context/Projectstate.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
-
+import QuestionAdder from "./components/QuestionAdder/QuestionAdder.jsx"
   const App = () => {
     return (
       <Projectstate>
@@ -25,6 +25,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
             <Route path="/StudentHome" element={<Recruitment/>}/>
         <Route path="/Reason" element={<Reason />} />
         <Route path="/Attendance" element={<AttendanceEmail />}/>
+        <Route path="/AddQuestions" element={<QuestionAdder />}/>
           </Routes>
         </Router>
       </Projectstate>

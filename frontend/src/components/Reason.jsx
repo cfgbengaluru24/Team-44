@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import projectcontext from "../context/Projectcontext";
 
 const Reason = () => {
+  const contextcontent=useContext(projectcontext);
   const {
     register,
     handleSubmit,
@@ -19,7 +21,7 @@ const Reason = () => {
     <div className="min-h-screen flex items-center justify-center bg-[#E9EDC9]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          Why are you not attending?
+          {contextcontent.ResonFormText}
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>

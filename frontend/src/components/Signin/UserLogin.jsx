@@ -24,6 +24,7 @@ const UserLogin = () => {
           localStorage.setItem("userToken",loginres.authtoken);
           contextcontent.setstudentFlag(true);
           contextcontent.setNewUser(false);
+          localStorage.setItem("Client","Student");
           console.log(`from Student${loginres}`);
           navigate("/studentHome");
         }
@@ -44,6 +45,7 @@ const UserLogin = () => {
       if(loginres.success){
         localStorage.setItem("userToken",loginres.authtoken);
         console.log(`from Admin${loginres}`);
+        localStorage.setItem("Client","Admin");
         contextcontent.setstudentFlag(false);
         contextcontent.setNewUser(false);
         navigate("/");
