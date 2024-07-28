@@ -28,10 +28,11 @@ function FileUpload() {
       if (!res.ok) {
         throw new Error('File upload failed');
       }
-
+      ;
       const result = await res.json();
       console.log(result.response.candidates[0].content.parts[0].text);
-      setResponseText(result.response.candidates[0].content.parts[0].text);
+      setResponseText((result.response.candidates[0].content.parts[0].text));
+      
       setError(null); // Clear previous errors
     } catch (err) {
       console.error('Error:', err);

@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
+import axios from "axios";
 
 const AttendanceEmail = () => {
   const {
@@ -20,11 +21,41 @@ const AttendanceEmail = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
-    alert("Form submitted successfully!");
-    reset();
+    console.log(data.emails);
+    let emails = []; // Initialize emails as an array
+  
+    // Loop through the emails in the data and push them into the emails array
+    for (let i in data.emails) {
+      if (data.emails[i] && data.emails[i].email) {
+        emails.push(data.emails[i].email);
+      } else {
+        // Handle nested email object (e.g., {0: {email: "dd@gmail.com"}})
+        for (let key in data.emails[i]) {
+          if (data.emails[i][key] && data.emails[i][key].email) {
+            emails.push(data.emails[i][key].email);
+          }
+        }
+      }
+    }
+  
+    // Create the payload object
+    let payload = { emails: emails };
+  
+    // Use axios to post the data
+    axios.post("http://localhost:4000/api/mail_sender/requestLeaveReason", payload)
+      .then(res => {
+        console.log(res.data);
+        alert("Form submitted successfully!");
+        reset(); // Ensure reset is called after the form is successfully submitted
+      })
+      .catch(error => {
+        console.error("There was an error submitting the form!", error);
+        alert("There was an error submitting the form.");
+      });
   };
+  
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#E9EDC9]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
