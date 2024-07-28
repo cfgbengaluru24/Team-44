@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const Reason = () => {
   const {
@@ -9,10 +10,17 @@ const Reason = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    alert("Form submitted successfully!");
-    reset();
+    try {
+      const response = await axios.post('http://localhost:4000/api/check-prompt/check-prompt', data);
+      console.log(response.data);
+      alert("Form submitted successfully!");
+      reset();
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("Error submitting form");
+    }
   };
 
   return (
