@@ -8,6 +8,7 @@ const TestApp = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]); // Array to store user answers
   const [loading, setLoading] = useState(true); // Add loading state
+  const [attempts, setAttempts] = useState(0);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -31,10 +32,19 @@ const TestApp = () => {
     };
 
     fetchQuestions();
+
+    // Get attempts from localStorage
+    const savedAttempts = localStorage.getItem('testAttempts');
+    if (savedAttempts) {
+      setAttempts(Number(savedAttempts));
+    }
   }, []);
 
   const handleStartTest = () => {
-    setStartTest(true);
+    if (attempts < 3) {
+      setStartTest(true);
+      alert(`You have ${3 - attempts} attempts remaining.`);
+    }
   };
 
   useEffect(() => {
@@ -68,6 +78,12 @@ const TestApp = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/question/evaluate', { answers });
       alert(`Test submitted! Your score: ${response.data.totalMarks}`);
+      setAttempts(attempts + 1);
+      localStorage.setItem('testAttempts', attempts + 1); // Update attempts in localStorage
+      setStartTest(false); // Reset test state
+      setCurrentQuestionIndex(0);
+      setTimeLeft(600);
+      setAnswers(Array(questions.length).fill(null)); // Reset answers
     } catch (error) {
       console.error('Error submitting test:', error);
     }
@@ -78,6 +94,17 @@ const TestApp = () => {
       <div className='flex justify-center items-center h-screen bg-[#E9EDC9]'>
         <div className='bg-white p-10 rounded-lg shadow-xl'>
           <h2 className='text-4xl font-bold mb-4'>Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  if (attempts >= 3) {
+    return (
+      <div className='flex justify-center items-center h-screen bg-[#E9EDC9]'>
+        <div className='bg-white p-10 rounded-lg shadow-xl'>
+          <h2 className='text-4xl font-bold mb-4'>Better Luck Next Time!</h2>
+          <p className='text-xl'>You have used all your attempts.</p>
         </div>
       </div>
     );
@@ -97,6 +124,7 @@ const TestApp = () => {
           <button onClick={handleStartTest} className='text-white bg-[#697838] rounded-full px-5 py-3 hover:bg-[#5a6b2f]'>
             Start Test
           </button>
+          <p className='text-xl mt-4'>Attempts remaining: {3 - attempts}</p>
         </div>
       </div>
     );
