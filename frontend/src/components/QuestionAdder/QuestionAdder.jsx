@@ -26,8 +26,8 @@ function QuestionForm() {
   };
 
   const handleSubmit = async () => {
-    if (numQuestions < 15) {
-      alert('You must enter at least 15 questions.');
+    if (numQuestions < 1) {
+      alert('You must enter at least 1 questions.');
       return;
     }
 

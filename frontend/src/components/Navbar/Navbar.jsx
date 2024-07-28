@@ -51,6 +51,7 @@ const Navbar = () => {
               e.preventDefault();
               document.getElementById("AboutUs").scrollIntoView({ block: 'start',  behavior: 'smooth' });
             }}>About</ li>
+            <li onClick={()=>{navigate("/Fileupload")}}>FileUpload</li>
         </ul>
       </div>
       {contextcontent.newUser && <div className='userSec'>

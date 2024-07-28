@@ -11,6 +11,7 @@ import AttendanceEmail from "./components/AttendanceEmail.jsx";
 import Projectstate from "./context/Projectstate.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import QuestionAdder from "./components/QuestionAdder/QuestionAdder.jsx"
+import FileUpload from "./components/FileUpload/FileUpload.jsx";
   const App = () => {
     return (
       <Projectstate>
@@ -23,6 +24,8 @@ import QuestionAdder from "./components/QuestionAdder/QuestionAdder.jsx"
             <Route path="/" element={<Homepage />} />
             <Route path="/TestApp" element={<TestApp/>}/>
             <Route path="/StudentHome" element={<Recruitment/>}/>
+            <Route path="/FileUpload" element={<FileUpload/>}/>
+
         <Route path="/Reason" element={<Reason />} />
         <Route path="/Attendance" element={<AttendanceEmail />}/>
         <Route path="/AddQuestions" element={<QuestionAdder />}/>
