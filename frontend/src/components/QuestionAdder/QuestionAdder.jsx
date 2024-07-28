@@ -61,7 +61,7 @@ function QuestionForm() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md mt-12">
       <h1 className="text-2xl font-bold mb-4 text-center text-blue-600">Question Form</h1>
       <div className="mb-6">
         <label htmlFor="numQuestions" className="block text-lg font-semibold mb-2 text-gray-700">Number of Questions:</label>

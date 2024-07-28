@@ -76,7 +76,7 @@ const Homepage = () => {
       </div>
 
       {/* About Section */}
-      <div className="bg-white py-[100px] px-6 max-w-[800px] m-auto">
+      <div className="bg-white py-[100px] px-6 max-w-[800px] m-auto" id="AboutUs">
         <h2 className="text-4xl font-bold text-center mb-6">About Us</h2>
         <p className="text-xl text-center">
         Joining the Dots (JTD) foundation is a not for profit organisation registered under the Govt. Of India in Jan 2015. Team JTD is a group of like-minded individuals who have come together to make a difference and contribute in the field of rural education. At JTD we want to prevent students from discontinuing their education due to socio-economic factors.</p>

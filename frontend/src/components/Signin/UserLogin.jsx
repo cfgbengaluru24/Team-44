@@ -22,9 +22,10 @@ const UserLogin = () => {
         const loginres= await response.json(); 
         if(loginres.success){
           localStorage.setItem("userToken",loginres.authtoken);
-          navigate("/");
           contextcontent.setstudentFlag(true);
-          console.log(loginres)
+          contextcontent.setNewUser(false);
+          console.log(`from Student${loginres}`);
+          navigate("/studentHome");
         }
         else{
           console.log(loginres);
@@ -42,12 +43,14 @@ const UserLogin = () => {
       const loginres= await response.json(); 
       if(loginres.success){
         localStorage.setItem("userToken",loginres.authtoken);
+        console.log(`from Admin${loginres}`);
         contextcontent.setstudentFlag(false);
+        contextcontent.setNewUser(false);
         navigate("/");
-        console.log(loginres)
       }
       else{
         console.log(loginres);
+        contextcontent.setnewUser(true);
         alert("Incorrect details");
       }
     }
@@ -56,11 +59,19 @@ const UserLogin = () => {
   const handleUpdateDetails=(e)=>{
     setloginData({ ...loginData, [e.target.name]: e.target.value });
   }
+  const handleShowAdmin=()=>{
+    contextcontent.setstudentFlag(false);
+    navigate('/userLogin');
+  }
+  const handleShowStudent=()=>{
+    contextcontent.setstudentFlag(true);
+    navigate('/userLogin');
+  }
   return (
     <div>
       <div className='LoginCover'>
-        {contextcontent.studentFlag && <div className='SigninHeading'><h2>Log in as Student</h2><p onClick={handleSigninShow}>to Signin</p></div>}
-        {!contextcontent.studentFlag && <div className='SigninHeading'><h2>Log in as Admin</h2><p onClick={handleSigninShow}>to Signin</p></div>}
+        {contextcontent.studentFlag && <div className='SigninHeading'><h2>Log in as Student</h2><p onClick={handleSigninShow}>to Signin</p><h3 onClick={handleShowAdmin}>Login As Admin</h3></div>}
+        {!contextcontent.studentFlag && <div className='SigninHeading'><h2>Log in as Admin</h2><p onClick={handleSigninShow}>to Signin</p><h3 onClick={handleShowStudent}>Login As Student</h3></div>}
         <div id="DetailsCover">
           <label>Email:</label>
           <input type='email' onChange={handleUpdateDetails} name='email' placeholder='abc@gmail.com'/>
