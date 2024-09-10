@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const imageUrl = "https://www.shutterstock.com/image-photo/ahmedabad-india-december-10-2017-unidentified-1143708920";
 
@@ -102,6 +103,54 @@ const Homepage = () => {
           {/* Add more stories as needed */}
         </div>
       </div>
+      <footer className="bg-[#E9EDC9] text-white py-12 border-t-2 border-gray-600">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          
+          <div className="mb-6 md:mb-0 md:w-1/3">
+            <img src="https://d1vdjc70h9nzd9.cloudfront.net/media/ngo/259000/259916/image/658f4cf8ab9f7.jpg" alt="JTD Foundation Logo" className="h-16 mb-4" />
+            <p className="text-gray-400">
+              Joining the Dots (JTD) Foundation is committed to bridging the educational gap in rural areas.
+            </p>
+          </div>
+
+          
+          <div className="mb-6 md:mb-0 md:w-1/3">
+            <h4 className="text-lg font-bold mb-4 text-black">Quick Links</h4>
+            <ul className="space-y-2">
+              <li><a href="/about" className="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="/projects" className="text-gray-400 hover:text-white">Projects</a></li>
+              <li><a href="/get-involved" className="text-gray-400 hover:text-white">Get Involved</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+
+          
+          <div className="mb-6 md:mb-0 md:w-1/3">
+            <h4 className="text-lg font-bold mb-4 text-black">Contact Us</h4>
+            <p className="text-gray-400">Email: info@jtdfoundation.org</p>
+            <p className="text-gray-400">Phone: +1 234 567 890</p>
+            <p className="text-gray-400"> 315/8, 1st ‘H’ Cross, Subbanna Garden, Vijayanagar, Bengaluru, Karnataka 560040</p>
+          </div>
+        </div>
+
+        
+        <div className="flex justify-center space-x-6 mb-8">
+            <FaInstagram className='text-black' size={20} />
+            <FaTwitter className='text-black' size={20} />
+            <FaFacebook className='text-black' size={20} />
+
+          
+        </div>
+
+        
+        <div className="text-center text-gray-400">
+          &copy; 2024 Joining the Dots (JTD) Foundation. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+      
+
     </div>
   );
 };

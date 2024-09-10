@@ -10,8 +10,13 @@ import Reason from "./components/Reason.jsx";
 import AttendanceEmail from "./components/AttendanceEmail.jsx";
 import Projectstate from "./context/Projectstate.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
+<<<<<<< Updated upstream
 import QuestionAdder from "./components/QuestionAdder/QuestionAdder.jsx"
 import FileUpload from "./components/FileUpload/FileUpload.jsx";
+=======
+import PlacementPage from "./components/PlacementPage.jsx";
+
+>>>>>>> Stashed changes
   const App = () => {
     return (
       <Projectstate>
@@ -28,7 +33,11 @@ import FileUpload from "./components/FileUpload/FileUpload.jsx";
 
         <Route path="/Reason" element={<Reason />} />
         <Route path="/Attendance" element={<AttendanceEmail />}/>
+<<<<<<< Updated upstream
         <Route path="/AddQuestions" element={<QuestionAdder />}/>
+=======
+        <Route path="/Placement" element={<PlacementPage />}/>
+>>>>>>> Stashed changes
           </Routes>
         </Router>
       </Projectstate>
