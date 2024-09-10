@@ -8,7 +8,7 @@ const Recruitment = () => {
         navigate('../TestApp');
     }
     const handleRedirectUser=()=>{
-      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      window.open('https://youtu.be/TBecDRJ0ykI?si=W56OBfhuz6pvlUaY', '_blank');
     }
   return (
     <>

@@ -7,8 +7,8 @@ import FileUpload from './components/FileUpload/FileUpload.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <QuestionForm /> */}
-    <FileUpload />
+    {/* <FileUpload /> */}
   </React.StrictMode>,
 )

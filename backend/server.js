@@ -17,6 +17,7 @@ app.use('/api/auth', require('./routes/auth.js'));
 app.use('/api/question', require('./routes/question.js'));
 app.use('/api/mail_sender', require('./routes/mail_sender.js'));
 app.use('/api/fileupload', require('./routes/upload.js')); // Use the upload route
+app.use('/api/check-prompt', require('./routes/reason_analysis.js')); // Use the check-prompt route
 
 app.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`);

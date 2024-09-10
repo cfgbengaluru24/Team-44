@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import projectcontext from "../context/Projectcontext";
 
 const Reason = () => {
+  const contextcontent=useContext(projectcontext);
   const {
     register,
     handleSubmit,
@@ -9,17 +12,24 @@ const Reason = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    alert("Form submitted successfully!");
-    reset();
+    try {
+      const response = await axios.post('http://localhost:4000/api/check-prompt/check-prompt', data);
+      console.log(response.data);
+      alert("Form submitted successfully!");
+      reset();  
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("Error submitting form");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#E9EDC9]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          Why are you not attending?
+          {contextcontent.ResonFormText}
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>

@@ -127,7 +127,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       ],
     });
 
-    const result = await chatSession.sendMessage('Give me in a neat summary format. dont give in json. ');
+    const result = await chatSession.sendMessage('Give me in a neat summary format. dont give in json and dont send me in normal forms ');
    
     console.log(JSON.stringify(result));
     // console.log(result.response.candidates[0].parts[0]);
